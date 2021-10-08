@@ -5,7 +5,7 @@
         <v-menu v-model="showMenu" absolute offset-y style="max-width: 600px">
           <template v-slot:activator="{ on, attrs }">
             <div class="d-flex align-center" v-bind="attrs" v-on="on">
-              <span>
+              <span class="lang_toggle__title">
                 {{ lang.title }}
               </span>
               <v-icon color="white">
@@ -15,8 +15,8 @@
           </template>
 
           <v-list>
-            <v-list-item v-for="(item, index) in langs" :key="index">
-              <v-list-item-title @click="lang = item">{{
+            <v-list-item class="lang_toggle__list" v-for="(item, index) in langs" :key="index">
+              <v-list-item-title class="lang_toggle__list_title" @click="lang = item">{{
                 item.title
               }}</v-list-item-title>
             </v-list-item>
@@ -28,11 +28,8 @@
         :src="require('../../assets/img/logo.svg')"
         alt=""
       />
-      <div class="mobile_soon__header">Site will open soon</div>
-      <div class="mobile_soon__subheader">
-        In the meantime, you can get <br />
-        acquainted with the collection <br />
-        and place an order on our
+      <div class="mobile_soon__title">{{translation[lang.id].title}}</div>
+      <div class="mobile_soon__subtitle" v-html="translation[lang.id].subtitle">
       </div>
       <a
         href="https://www.instagram.com/divavictoriaatelier/"
@@ -50,11 +47,25 @@ export default {
   name: "Soon",
   components: {},
   data: () => ({
+      showMenu: false,
     langs: [
       { title: "РУС", id: "ru" },
       { title: "ENG", id: "en" },
     ],
     lang: { title: "РУС", id: "ru" },
+    translation: {
+        'en': {
+            title: 'Site will open soon',
+            subtitle: `In the meantime, you can get <br />
+        acquainted with the collection <br />
+        and place an order on our`,
+        },
+        'ru': {
+            title: 'Сайт скоро откроется',
+            subtitle: `А пока вы можете ознакомиться с коллекцией и оформить заказ в нашем`,
+        }
+
+    }
   }),
 };
 </script>
@@ -81,7 +92,7 @@ export default {
     width: 100%;
   }
 
-  &__header {
+  &__title {
     font-family: "Playfair Display" !important;
     font-size: 36px;
     line-height: 44px;
@@ -98,13 +109,14 @@ export default {
     }
   }
 
-  &__subheader {
+  &__subtitle {
     font-size: 18px;
     text-align: center;
     font-family: "proxima_nova";
     text-transform: uppercase;
     line-height: 22px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
+    padding: 0 -5px;
     transform: scale(1, 0.95);
     margin-bottom: 24px;
     &::first-letter {
@@ -138,9 +150,18 @@ export default {
   & .lang_toggle {
     // width: 45px;
     position: absolute;
-    top: 0;
-    right: 0;
-    font-family: "proxima_nova";
+    top: 13px;
+    right: 16px;
+    padding: 5px;
+    &__title {
+        margin-right: 8px;
+        font-family: "proxima_nova"!important;
+    }
+
+    &__list_title {
+        width: 43px!important;
+    }
+    font-family: "proxima_nova"!important;
   }
 }
 </style>

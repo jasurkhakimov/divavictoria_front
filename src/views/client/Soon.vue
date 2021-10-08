@@ -115,7 +115,7 @@ export default {
     font-family: "proxima_nova";
     text-transform: uppercase;
     line-height: 22px;
-    letter-spacing: 1.2px;
+    letter-spacing: 1.5px;
     padding: 0 -5px;
     transform: scale(1, 0.95);
     margin-bottom: 24px;

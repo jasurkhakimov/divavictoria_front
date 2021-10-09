@@ -121,13 +121,13 @@ export default {
         translation: {
             en: {
                 title: "Site will open soon",
-                subtitle: `In the meantime, you can get <br />
-        acquainted with the collection <br />
-        and place an order on our`,
+                subtitle: `In the meantime, you can get
+        acquainted with the&nbsp;collection
+        and&nbsp;place an&nbsp;order on our`,
             },
             ru: {
                 title: "Сайт скоро откроется",
-                subtitle: `А пока вы можете ознакомиться с коллекцией и оформить заказ в нашем`,
+                subtitle: `А пока вы можете ознакомиться с&nbsp;коллекцией и&nbsp;оформить заказ в&nbsp;нашем`,
             },
         },
     }),

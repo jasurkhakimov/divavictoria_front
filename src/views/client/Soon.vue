@@ -6,6 +6,8 @@
                 absolute
                 offset-y
                 style="max-width: 600px"
+                transition="slide-y-transition"
+                bottom
             >
                 <template v-slot:activator="{ on, attrs }">
                     <div class="d-flex align-center" v-bind="attrs" v-on="on">
@@ -22,9 +24,14 @@
 
                 <v-list>
                     <v-list-item
-                        class="lang_toggle__list"
+                        class=""
                         v-for="(item, index) in langs"
                         :key="index"
+                        ripple
+                        :class="[
+                            lang.id == item.id ? 'lang_active' : '',
+                            'lang_toggle__list',
+                        ]"
                     >
                         <v-list-item-title
                             class="lang_toggle__list_title"
@@ -204,8 +211,18 @@ export default {
         }
     }
 }
+.lang_active {
+    background-color: black !important;
+    color: white !important;
+}
+
+.v-list {
+    padding: 0 !important;
+}
+
 .lang_toggle {
     // width: 45px;
+
     & .theme--light.v-icon {
         color: white;
     }
@@ -220,8 +237,8 @@ export default {
         font-family: "proxima_nova" !important;
     }
 
-    &__list_title {
-        width: 43px !important;
+    &__list {
+        cursor: pointer;
     }
     font-family: "proxima_nova" !important;
 }
@@ -260,7 +277,7 @@ export default {
             &__title {
                 font-family: "Playfair Display" !important;
                 font-size: 64px;
-                width: 550px;
+                width: 450px;
                 line-height: 68px;
                 text-transform: uppercase;
                 letter-spacing: 2px;
